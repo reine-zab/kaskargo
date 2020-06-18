@@ -102,12 +102,28 @@
             prevPos = pos;
         }
 
+        var style = { font: "bold 32px Arial", fill: "red"};
+
+        this.textKaskargo = this.add.text(0.6666 * config.width, 0.6666 * config.height, "Rendez-nous nos Kaskargos !", style);
+        this.textKaskargo.setOrigin(0.5);
+        this.textKaskargo.setShadow(3, 3, 'rgba(0,0,0,1)', 2);
+        
+
     }
 
     function update ()
     {
         cam = this.cameras.main;
         cam.rotation += 0.01;
+        this.textKaskargo.angle -= 1;
+        this.textKaskargo.x = 0.6666 * config.width + Math.cos(this.time.now / 1000) * 50;
+        this.textKaskargo.y = 0.6666 * config.height + Math.sin(this.time.now / 1000) * 50;
+
+        value = Math.abs(Math.sin(this.time.now / 1000)) * 256
+        valueg = Math.abs(Math.sin(this.time.now / 2000)) * 256
+
+        this.textKaskargo.style.setColor('rgb(' + value + ', ' + valueg + ', ' + (256 - value) + ')');
+
     }
     
 
